@@ -1,16 +1,347 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Learning Document Generator">
+	<!-- Hero Section -->
+	<div class="max-w-4xl mx-auto text-center mb-12">
+		<div class="mb-8">
+			<div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mb-6">
+				<svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+				</svg>
+			</div>
+			<h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
+				Learning Document
+				<span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+					Generator
+				</span>
+			</h1>
+			<p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+				Transform any topic into a comprehensive learning document. Powered by AI to create structured, detailed study materials tailored to your needs.
+			</p>
+		</div>
+	</div>
+
+	<!-- Main Form -->
+	<div class="max-w-2xl mx-auto">
+		<div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 p-8">
+			<form id="topicForm" class="space-y-6">
+				<div>
+					<label for="topic" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+						What would you like to learn about?
+					</label>
+					<div class="relative">
+						<input 
+							type="text" 
+							id="topic" 
+							name="topic" 
+							placeholder="e.g., Machine Learning, Ancient History, JavaScript Frameworks..."
+							class="w-full px-4 py-3 pr-12 text-lg border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 transition-all duration-200"
+							required
+							autofocus
+						/>
+						<div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+							<svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+							</svg>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<label for="complexity" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+						Complexity Level
+					</label>
+					<select 
+						id="complexity" 
+						name="complexity"
+						class="w-full px-4 py-3 text-lg border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all duration-200"
+					>
+						<option value="beginner">Beginner - New to the topic</option>
+						<option value="intermediate" selected>Intermediate - Some background knowledge</option>
+						<option value="advanced">Advanced - Deep dive with technical details</option>
+					</select>
+				</div>
+
+				<div>
+					<label for="chapters" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+						Number of Chapters
+					</label>
+					<input 
+						type="range" 
+						id="chapters" 
+						name="chapters" 
+						min="3" 
+						max="12" 
+						value="6"
+						class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"
+					/>
+					<div class="flex justify-between text-sm text-gray-500 dark:text-gray-400 mt-1">
+						<span>3</span>
+						<span id="chapterCount" class="font-medium text-blue-600 dark:text-blue-400">6</span>
+						<span>12</span>
+					</div>
+				</div>
+
+				<button 
+					type="submit" 
+					id="generateBtn"
+					class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
+				>
+					<span class="flex items-center justify-center">
+						<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+						</svg>
+						Generate Learning Document
+					</span>
+				</button>
+			</form>
+		</div>
+	</div>
+
+	<!-- Features Section -->
+	<div class="max-w-6xl mx-auto mt-16">
+		<div class="grid md:grid-cols-3 gap-8">
+			<div class="text-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+				<div class="inline-flex items-center justify-center w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg mb-4">
+					<svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+					</svg>
+				</div>
+				<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">AI-Powered</h3>
+				<p class="text-gray-600 dark:text-gray-300">Leverages advanced language models to create comprehensive, accurate learning materials.</p>
+			</div>
+			<div class="text-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+				<div class="inline-flex items-center justify-center w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg mb-4">
+					<svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+					</svg>
+				</div>
+				<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Structured</h3>
+				<p class="text-gray-600 dark:text-gray-300">Organized in logical chapters and sections for optimal learning progression.</p>
+			</div>
+			<div class="text-center p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700">
+				<div class="inline-flex items-center justify-center w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg mb-4">
+					<svg class="w-6 h-6 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+					</svg>
+				</div>
+					<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">PDF & LaTeX</h3>
+				<p class="text-gray-600 dark:text-gray-300">Professional PDF documents and LaTeX source files ready for use.</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Loading State -->
+	<div id="loadingState" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+		<div class="bg-white dark:bg-gray-800 rounded-lg p-8 max-w-sm mx-4 text-center">
+			<div class="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
+			<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Generating Document...</h3>
+			<p class="text-gray-600 dark:text-gray-300">This may take a few moments</p>
+		</div>
+	</div>
+</Layout>
+
+<script>
+	// Update chapter count display
+	const chapterSlider = document.getElementById('chapters') as HTMLInputElement;
+	const chapterCount = document.getElementById('chapterCount');
+	
+	chapterSlider?.addEventListener('input', (e) => {
+		if (chapterCount) {
+			chapterCount.textContent = (e.target as HTMLInputElement).value;
+		}
+	});
+
+	// Form submission and progress tracking
+	const form = document.getElementById('topicForm') as HTMLFormElement;
+	const loadingState = document.getElementById('loadingState');
+	const generateBtn = document.getElementById('generateBtn') as HTMLButtonElement;
+	let currentJobId: string | null = null;
+	let progressInterval: number | null = null;
+
+	form?.addEventListener('submit', async (e) => {
+		e.preventDefault();
+		
+		const formData = new FormData(form);
+		const data = {
+			topic: formData.get('topic') as string,
+			complexity: formData.get('complexity') as string,
+			chapters: parseInt(formData.get('chapters') as string)
+		};
+
+		// Show loading state
+		updateLoadingState('Starting generation...', 0);
+		loadingState?.classList.remove('hidden');
+		generateBtn.disabled = true;
+
+		try {
+			const response = await fetch('/api/generate-document', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(data)
+			});
+
+			const result = await response.json();
+
+			if (response.ok && result.success) {
+				currentJobId = result.jobId;
+				console.log('✅ Document generation started:', result);
+				
+				// Start polling for progress
+				startProgressPolling(result.jobId);
+			} else {
+				throw new Error(result.error || 'Failed to generate document');
+			}
+		} catch (error) {
+			console.error('❌ Error generating document:', error);
+			alert(`Failed to generate document: ${error instanceof Error ? error.message : 'Unknown error'}`);
+			
+			// Hide loading state on error
+			loadingState?.classList.add('hidden');
+			generateBtn.disabled = false;
+		}
+	});
+
+	// Progress polling function
+	function startProgressPolling(jobId: string) {
+		progressInterval = setInterval(async () => {
+			try {
+				const response = await fetch(`/api/job-status/${jobId}`);
+				const status = await response.json();
+
+				if (response.ok && status.success) {
+					updateLoadingState(getStatusMessage(status), status.progress);
+
+					if (status.status === 'completed') {
+						// Generation completed!
+						clearInterval(progressInterval!);
+						showCompletionState(status);
+					} else if (status.status === 'failed') {
+						// Generation failed
+						clearInterval(progressInterval!);
+						showErrorState(status.error || 'Unknown error');
+					}
+				} else {
+					console.error('Failed to get job status:', status);
+				}
+			} catch (error) {
+				console.error('Error polling job status:', error);
+			}
+		}, 2000); // Poll every 2 seconds
+	}
+
+	// Update loading state with progress
+	function updateLoadingState(message: string, progress: number) {
+		const loadingText = document.querySelector('#loadingState h3');
+		const loadingDesc = document.querySelector('#loadingState p');
+		
+		if (loadingText) loadingText.textContent = message;
+		if (loadingDesc) loadingDesc.textContent = `${Math.round(progress)}% complete`;
+	}
+
+	// Get user-friendly status message
+	function getStatusMessage(status: any): string {
+		switch (status.status) {
+			case 'pending': return 'Preparing generation...';
+			case 'processing': 
+				if (status.progress < 30) return '🔌 Connecting to AI...';
+				if (status.progress < 40) return '📋 Creating chapter outline...';
+				if (status.progress < 85) return '📝 Generating content...';
+				if (status.progress < 95) return '📄 Assembling document...';
+				return '🔍 Finalizing...';
+			case 'completed': return '🎉 Generation Complete!';
+			case 'failed': return '❌ Generation Failed';
+			default: return 'Processing...';
+		}
+	}
+
+	// Show completion state with download options
+	function showCompletionState(status: any) {
+		const loadingContent = document.querySelector('#loadingState > div');
+		if (loadingContent) {
+			loadingContent.innerHTML = `
+				<div class="text-center">
+					<div class="w-16 h-16 mx-auto mb-4 bg-green-100 rounded-full flex items-center justify-center">
+						<svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+						</svg>
+					</div>
+					<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Document Generated Successfully!</h3>
+					<p class="text-gray-600 dark:text-gray-300 mb-4">Your learning document is ready for download.</p>
+					<div class="space-y-2">
+						${status.pdfGenerated ? `
+							<a href="/api/download-pdf/${currentJobId}" 
+							   class="block w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+							   download>
+								📕 Download PDF Document
+							</a>
+						` : ''}
+						<a href="/api/download/${currentJobId}?format=latex" 
+						   class="block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+						   download>
+							📄 Download LaTeX Source
+						</a>
+						<a href="/api/download/${currentJobId}?format=json" 
+						   class="block w-full bg-gray-600 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+						   download>
+							🗂️ Download Raw Data
+						</a>
+						<button onclick="closeModal()" class="w-full bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-lg transition-colors">
+							Close
+						</button>
+					</div>
+					<div class="mt-4 text-sm text-gray-500">
+						<p>📊 Document size: ${(status.resultSize / 1024).toFixed(1)}KB</p>
+						<p>⏱️ Generated in: ${status.elapsedTime}</p>
+					</div>
+				</div>
+			`;
+		}
+	}
+
+	// Show error state
+	function showErrorState(error: string) {
+		const loadingContent = document.querySelector('#loadingState > div');
+		if (loadingContent) {
+			loadingContent.innerHTML = `
+				<div class="text-center">
+					<div class="w-16 h-16 mx-auto mb-4 bg-red-100 rounded-full flex items-center justify-center">
+						<svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+						</svg>
+					</div>
+					<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Generation Failed</h3>
+					<p class="text-gray-600 dark:text-gray-300 mb-4">${error}</p>
+					<button onclick="closeModal()" class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors">
+						Try Again
+					</button>
+				</div>
+			`;
+		}
+	}
+
+	// Close modal function
+	window.closeModal = function() {
+		if (progressInterval) {
+			clearInterval(progressInterval);
+			progressInterval = null;
+		}
+		currentJobId = null;
+		loadingState?.classList.add('hidden');
+		generateBtn.disabled = false;
+		
+		// Reset loading content
+		const loadingContent = document.querySelector('#loadingState > div');
+		if (loadingContent) {
+			loadingContent.innerHTML = `
+				<div class="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mx-auto mb-4"></div>
+				<h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Generating Document...</h3>
+				<p class="text-gray-600 dark:text-gray-300">This may take a few moments</p>
+			`;
+		}
+	};
+</script>

@@ -1,24 +1,145 @@
-# build output
+# Build output
 dist/
-# generated types
+
+# Generated types
 .astro/
 
-# dependencies
+# Dependencies
 node_modules/
-
-# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+.pnpm-debug.log*
 
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
 
-# environment variables
+# Coverage directory
+coverage/
+*.lcov
+.nyc_output
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional caches
+.npm
+.eslintcache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Environment variables
 .env
+.env.development.local
+.env.test.local
+.env.production.local
 .env.production
+.env.local
 
-# macOS-specific files
+# Parcel cache
+.cache
+.parcel-cache
+
+# Generated documents and output
+output/
+downloads/
+*.pdf
+*.tex
+*.aux
+*.log
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.out
+*.toc
+*.nav
+*.snm
+*.vrb
+
+# Temporary files
+temp-pipeline-*.ts
+*.tmp
+*.temp
+
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
 
-# jetbrains setting folder
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# IDEs
+.vscode/
 .idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+*.swn
+*.un~
+Session.vim
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# LaTeX auxiliary files
+*.bbl
+*.bcf
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+*.run.xml
+*.xdv
+
+# Project specific
+ollama-cache/
+generated-docs/
+test-output/
